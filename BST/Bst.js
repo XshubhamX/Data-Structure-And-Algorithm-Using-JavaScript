@@ -66,6 +66,19 @@ class BST {
     }
     return "Node Not Found";
   };
+
+  findRecursive = (value, node) => {
+    if (node === null) {
+      return "Node Not Found";
+    } else if (node.value === value) {
+      return node;
+    } else if (node.value > value) {
+      node = this.findRecursive(value, node.lChild);
+    } else {
+      node = this.findRecursive(value, node.rChild);
+    }
+    return node;
+  };
 }
 
 const tree = new BST(10);
@@ -75,6 +88,6 @@ tree.pushRecursive(7, tree.root);
 tree.pushRecursive(7.5, tree.root);
 tree.pushRecursive(6, tree.root);
 
-console.log(tree.findIterative(7.51));
+console.log(tree.findRecursive(8, tree.root));
 
 console.log(tree.root.lChild);
