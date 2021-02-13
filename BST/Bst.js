@@ -12,7 +12,7 @@ class BST {
     this.root = newNode;
   }
 
-  pushIterative= (value) => {
+  pushIterative = (value) => {
     const newNode = new Node(value);
     let start = this.root;
     while (true) {
@@ -32,11 +32,33 @@ class BST {
     }
     return this;
   };
+
+  pushRecursive = (value, node) => {
+    if (node.value > value) {
+      if (node.lChild === null) {
+        const newNode = new Node(value);
+        node.lChild = newNode;
+        return newNode;
+      }
+      node = this.pushRecursive(value, node.lChild);
+    }
+    if (node.value < value) {
+      if (node.rChild === null) {
+        const newNode = new Node(value);
+        node.rChild = newNode;
+        return newNode;
+      }
+      node = this.pushRecursive(value, node.rChild);
+    }
+    return node;
+  };
 }
 
 const tree = new BST(10);
 
-tree.pushIterative(11);
-tree.pushIterative(10.5);
+tree.pushRecursive(8, tree.root);
+tree.pushRecursive(7, tree.root);
+tree.pushRecursive(7.5, tree.root);
+tree.pushRecursive(6, tree.root);
 
-console.log(tree);
+console.log(tree.root.lChild);
