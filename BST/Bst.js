@@ -52,6 +52,20 @@ class BST {
     }
     return node;
   };
+
+  findIterative = (value) => {
+    let start = this.root;
+    while (start) {
+      if (start.value === value) {
+        return start;
+      } else if (start.value > value) {
+        start = start.lChild;
+      } else {
+        start = start.rChild;
+      }
+    }
+    return "Node Not Found";
+  };
 }
 
 const tree = new BST(10);
@@ -60,5 +74,7 @@ tree.pushRecursive(8, tree.root);
 tree.pushRecursive(7, tree.root);
 tree.pushRecursive(7.5, tree.root);
 tree.pushRecursive(6, tree.root);
+
+console.log(tree.findIterative(7.51));
 
 console.log(tree.root.lChild);
