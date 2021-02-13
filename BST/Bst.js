@@ -79,14 +79,32 @@ class BST {
     }
     return node;
   };
+  bfsIterative = () => {
+    let data = [],
+      queue = [],
+      node = this.root;
+    queue.push(this.root);
+
+    while (queue.length) {
+      node = queue.shift();
+      data.push(node.value);
+      if (node.lChild) queue.push(node.lChild);
+      if (node.rChild) queue.push(node.rChild);
+    }
+
+    return data;
+  };
 }
 
 const tree = new BST(10);
 
-tree.pushRecursive(8, tree.root);
-tree.pushRecursive(7, tree.root);
-tree.pushRecursive(7.5, tree.root);
 tree.pushRecursive(6, tree.root);
+tree.pushRecursive(3, tree.root);
+tree.pushRecursive(8, tree.root);
+tree.pushRecursive(15, tree.root);
+tree.pushRecursive(20, tree.root);
+
+console.log(tree.bfsIterative());
 
 console.log(tree.findRecursive(8, tree.root));
 
