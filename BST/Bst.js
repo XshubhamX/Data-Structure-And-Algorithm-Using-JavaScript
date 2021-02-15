@@ -115,6 +115,16 @@ class BST {
     traverse(this.root);
     return data;
   };
+  DFSInOrder = () => {
+    var data = [];
+    const traverse = (node) => {
+      if (node.lChild) traverse(node.lChild);
+      data.push(node.value);
+      if (node.rChild) traverse(node.rChild);
+    };
+    traverse(this.root);
+    return data;
+  };
 }
 
 const tree = new BST(10);
@@ -127,3 +137,4 @@ tree.pushRecursive(20, tree.root);
 
 console.log(tree.DFSPreOrder());
 console.log(tree.DFSPostOrder());
+console.log(tree.DFSInOrder());
