@@ -94,6 +94,16 @@ class BST {
 
     return data;
   };
+  DFSPreOrder = () => {
+    var data = [];
+    const traverse = (node) => {
+      data.push(node.value);
+      if (node.lChild) traverse(node.lChild);
+      if (node.rChild) traverse(node.rChild);
+    };
+    traverse(this.root);
+    return data;
+  };
 }
 
 const tree = new BST(10);
@@ -104,8 +114,4 @@ tree.pushRecursive(8, tree.root);
 tree.pushRecursive(15, tree.root);
 tree.pushRecursive(20, tree.root);
 
-console.log(tree.bfsIterative());
-
-console.log(tree.findRecursive(8, tree.root));
-
-console.log(tree.root.lChild);
+console.log(tree.DFSPreOrder());
