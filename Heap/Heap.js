@@ -62,4 +62,4 @@ class MaxHeap {
 
 const maxheap = new MaxHeap([41, 39, 33, 18, 27, 12]);
 
-console.log(maxheap.removeMax());
+console.log(maxheap.values);
